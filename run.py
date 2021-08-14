@@ -1,10 +1,31 @@
 from random import randint
 
+"""
+Creating player and computer boards
+"""
+computer_board = []
+player_board = []
+
+for i in range(0, 5):
+    computer_board.append(["#"]*5)
+for i in range(0, 5):
+    player_board.append(["#"]*5)
+
+
+def print_player_board(board):
+    for row in board:
+        print(" ".join(row))
+
+
+def print_computer_board(board):
+    for row in board:
+        print(" ".join(row))
+
 
 def new_game():
     """
-    Starts new game, sets board size and number of ships.
-    Print welcome message and takes players name. 
+    Starts game, sets board size and number of ships.
+    Print welcome message and takes players name.
     """
     size = 5
     num_ships = 4
@@ -16,7 +37,12 @@ def new_game():
     print("<", "-" * 38, ">")
     player_name = input(" Please enter your name here:")
     print(f" Good luck {player_name} and remember to have fun!")
-    print("<", "-" * 38, ">")
+    print("<", "-" * 38, ">\n")
+
+    print(f"{player_name}'s Board:\n")
+    print_player_board(player_board)
+    print("\nComputer's Board:\n")
+    print_computer_board(computer_board)
 
 
 new_game()
