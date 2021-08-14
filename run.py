@@ -22,6 +22,28 @@ def print_computer_board(computer_board):
         print(" ".join(row))
 
 
+def random_row(computer_board):
+    return randint(0, len(computer_board) - 1)
+
+
+def random_col(computer_board):
+    return randint(0, len(computer_board[0]) - 1)
+
+
+def player_random_row(player_board):
+    return randint(0, len(player_board) - 1)
+
+
+def player_random_col(player_board):
+    return randint(0, len(player_board[0]) - 1)
+
+
+comp_ship_row = random_row(computer_board)
+comp_ship_col = random_col(computer_board)
+player_ship_row = random_row(player_board)
+player_ship_col = random_col(player_board)
+
+
 def new_game():
     """
     Starts game, sets board size and number of ships.
