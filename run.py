@@ -40,8 +40,8 @@ def player_random_col(player_board):
 
 comp_ship_row = random_row(computer_board)
 comp_ship_col = random_col(computer_board)
-player_ship_row = random_row(player_board)
-player_ship_col = random_col(player_board)
+player_ship_row = player_random_row(player_board)
+player_ship_col = player_random_col(player_board)
 
 
 def new_game():
