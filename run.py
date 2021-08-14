@@ -12,13 +12,13 @@ for i in range(0, 5):
     player_board.append(["#"]*5)
 
 
-def print_player_board(board):
-    for row in board:
+def print_player_board(player_board):
+    for row in player_board:
         print(" ".join(row))
 
 
-def print_computer_board(board):
-    for row in board:
+def print_computer_board(computer_board):
+    for row in computer_board:
         print(" ".join(row))
 
 
