@@ -57,11 +57,18 @@ def play_game():
         if guess_row == ship_row and guess_col == ship_col:
             print("You Win! Battleship destroyed\n")
             board[guess_row][guess_col] = "*"
-            return
+            exit()
         else:
-            print("Miss! Please try again\n")
-            board[guess_row][guess_col] = "@"
-            print_board(board)
+            if (guess_row < 0 or guess_row > 4) or (guess_col < 0 or guess_col > 4):
+                print("You missed the board, try again!")
+                play_game()
+            elif (board[guess_row][guess_col] == "@"):
+                print("That was guessed already, please try again!")
+                play_game()
+            else:
+                print("\nMiss! Please try again\n")
+                board[guess_row][guess_col] = "@"
+                print_board(board)
 
         comp_guess_row = randint(0, len(board) - 1)
         comp_guess_col = randint(0, len(board[0]) - 1)
@@ -71,14 +78,14 @@ def play_game():
         if comp_guess_row == ship_row and comp_guess_col == ship_col:
             print("Computer Hit! You lose battleships\n")
             board[guess_row][guess_col] = "*"
-            return
+            exit()
         else:
             print("Computer Missed!\n")
             board[comp_guess_row][comp_guess_col] = "@"
             print_board(board)
 
     if guesses >= 9:
-        print("You ran out of guesses :-( Please try again!")
+        print("You ran out of guesses, it's a draw :-( Please try again!")
 
 
 def new_game():
