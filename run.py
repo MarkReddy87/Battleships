@@ -41,28 +41,32 @@ ship_col = random_col(board)
 
 def play_game():
     for guesses in range(10):
-        guess_row = input("\nPlease guess a row: ")
-        guess_col = input("Please guess a column: ")
+        guess_row = int(input("\nPlease guess a row: "))
+        guess_col = int(input("Please guess a column: "))
         print(f"\nYou guessed row:{guess_row} and column:{guess_col}")
 
         if guess_row == ship_row and guess_col == ship_col:
-            print("Hit! You sunk my battleship\n")
+            print("You Win! Battleship destroyed\n")
             break
         else:
             print("Miss! Please try again\n")
+            board[guess_row][guess_col] = "@"
+            print_board(board)
 
         comp_guess_row = randint(0, len(board) - 1)
         comp_guess_col = randint(0, len(board[0]) - 1)
-        print(f"Computer guessed row:{comp_guess_row} and cloumn:{comp_guess_col}")
+        print(f"\nComputer guessed row:{comp_guess_row} and cloumn:{comp_guess_col}")
 
         if comp_guess_row == ship_row and comp_guess_col == ship_col:
             print("Computer Hit! You lose battleships\n")
             break
         else:
-            print("Computer Missed!")
+            print("Computer Missed!\n")
+            board[comp_guess_row][comp_guess_col] = "@"
+            print_board(board)
 
     if guesses >= 9:
-        print("You ran out of guesses :-() Please try again!")
+        print("You ran out of guesses :-( Please try again!")
 
 
 def new_game():
