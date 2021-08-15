@@ -56,7 +56,8 @@ def play_game():
             board[guess_row][guess_col] = "*"
             exit()
         else:
-            if (guess_row < 0 or guess_row > 4) or (guess_col < 0 or guess_col > 4):
+            if (guess_row < 0 or guess_row > 4) or \
+                    (guess_col < 0 or guess_col > 4):
                 print("You missed the board, try again!")
                 play_game()
             elif (board[guess_row][guess_col] == "@"):
