@@ -41,9 +41,18 @@ ship_col = random_col(board)
 
 def play_game():
     for guesses in range(10):
-        guess_row = int(input("\nPlease guess a row: "))
-        guess_col = int(input("Please guess a column: "))
-        print(f"\nYou guessed row:{guess_row} and column:{guess_col}")
+        try:
+            guess_row = int(input("\nPlease guess a row: "))
+            print(f"You guessed row:{guess_row}")
+        except ValueError:
+            print("Can only enter number's, try again!")
+            play_game()
+        try:
+            guess_col = int(input("Please guess a column: "))
+            print(f"You guessed:{guess_col}")
+        except ValueError:
+            print("Can only enter number's, try again!")
+            play_game()
 
         if guess_row == ship_row and guess_col == ship_col:
             print("You Win! Battleship destroyed\n")
