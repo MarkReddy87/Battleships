@@ -43,20 +43,21 @@ def play_game():
     for guesses in range(10):
         try:
             guess_row = int(input("\nPlease guess a row: "))
-            print(f"You guessed row:{guess_row}")
+            print(f"You guessed row: {guess_row}")
         except ValueError:
             print("Can only enter number's, try again!")
             play_game()
         try:
             guess_col = int(input("Please guess a column: "))
-            print(f"You guessed:{guess_col}")
+            print(f"You guessed: {guess_col}")
         except ValueError:
             print("Can only enter number's, try again!")
             play_game()
 
         if guess_row == ship_row and guess_col == ship_col:
             print("You Win! Battleship destroyed\n")
-            break
+            board[guess_row][guess_col] = "*"
+            return
         else:
             print("Miss! Please try again\n")
             board[guess_row][guess_col] = "@"
@@ -64,11 +65,13 @@ def play_game():
 
         comp_guess_row = randint(0, len(board) - 1)
         comp_guess_col = randint(0, len(board[0]) - 1)
-        print(f"\nComputer guessed row:{comp_guess_row} and cloumn:{comp_guess_col}")
+        print(f"\nComputer guessed row: {comp_guess_row}")
+        print(f"Computer guessed column: {comp_guess_col}")
 
         if comp_guess_row == ship_row and comp_guess_col == ship_col:
             print("Computer Hit! You lose battleships\n")
-            break
+            board[guess_row][guess_col] = "*"
+            return
         else:
             print("Computer Missed!\n")
             board[comp_guess_row][comp_guess_col] = "@"
