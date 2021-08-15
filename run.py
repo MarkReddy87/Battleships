@@ -58,6 +58,25 @@ def make_guess():
     comp_guess_col = randint(0, len(computer_board[0]) - 1)
     print(f"Computer has guessed row:{comp_guess_row} and cloumn:{comp_guess_col}")
 
+    comp_score = 0
+    player_score = 0
+    if guess_row == comp_ship_row and guess_col == comp_ship_col:
+        print("Hit! You sunk a battleship")
+        player_score + 1
+    else:
+        print("Miss! Please try again")
+
+    if comp_guess_row == player_ship_row and comp_guess_col == player_ship_col:
+        print("Computer Hit! You lost a battleship")
+        comp_score + 1
+    else:
+        print("Computer Miss!")
+
+    print(f"Your score is:{player_score}")
+    print(f"Computer's score is:{comp_score}")
+
+    make_guess()
+
 
 def new_game():
     """
