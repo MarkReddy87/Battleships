@@ -1,106 +1,90 @@
 from random import randint
 
 """
-Creating player and computer boards
+Defining variables
 """
-computer_board = []
-player_board = []
+size = 5
+guesses = 10
+board = []
+
+"""
+Creating battleship board
+"""
+
 
 for i in range(0, 5):
-    computer_board.append(["#"]*5)
-for i in range(0, 5):
-    player_board.append(["#"]*5)
+    board.append(["#"]*5)
 
 
-def print_player_board(player_board):
-    for row in player_board:
+def print_board(board):
+    for row in board:
         print(" ".join(row))
 
 
-def print_computer_board(computer_board):
-    for row in computer_board:
-        print(" ".join(row))
-
-
 """
-choosing random row's and column's for ships on both boards and
-storing them in variables
+choosing random row and column for ship on board and
+storing it in a variable
 """
 
 
-def comp_random_row(computer_board):
-    return randint(0, len(computer_board) - 1)
+def random_row(board):
+    return randint(0, len(board) - 1)
 
 
-def comp_random_col(computer_board):
-    return randint(0, len(computer_board[0]) - 1)
+def random_col(board):
+    return randint(0, len(board[0]) - 1)
 
 
-def player_random_row(player_board):
-    return randint(0, len(computer_board) - 1)
+ship_row = random_row(board)
+ship_col = random_col(board)
 
 
-def player_random_col(player_board):
-    return randint(0, len(computer_board[0]) - 1)
-
-
-comp_ship_row = comp_random_row(computer_board)
-comp_ship_col = comp_random_col(computer_board)
-player_ship_row = player_random_row(player_board)
-player_ship_col = player_random_col(player_board)
-
-
-def make_guess():
-    guess_row = input("\nPlease guess a row: ")
-    guess_col = input("Please guess a column: ")
-    print(f"\nYou have guessed row:{guess_row} and column:{guess_col}")
-    comp_guess_row = randint(0, len(computer_board) - 1)
-    comp_guess_col = randint(0, len(computer_board[0]) - 1)
-    print(f"Computer has guessed row:{comp_guess_row} and cloumn:{comp_guess_col}")
-
+def play_game():
     comp_score = 0
     player_score = 0
-    if guess_row == comp_ship_row and guess_col == comp_ship_col:
-        print("Hit! You sunk a battleship")
-        player_score + 1
+    guess_row = input("\nPlease guess a row: ")
+    guess_col = input("Please guess a column: ")
+    print(f"\nYou guessed row:{guess_row} and column:{guess_col}")
+
+    if guess_row == ship_row and guess_col == ship_col:
+        print("Hit! You sunk a battleship\n")
+        print(f"Your score is:{player_score + 1}\n")
     else:
         print("Miss! Please try again")
+        print(f"Your score is:{player_score}\n")
 
-    if comp_guess_row == player_ship_row and comp_guess_col == player_ship_col:
-        print("Computer Hit! You lost a battleship")
-        comp_score + 1
+    comp_guess_row = randint(0, len(board) - 1)
+    comp_guess_col = randint(0, len(board[0]) - 1)
+    print(f"Computer guessed row:{comp_guess_row} and cloumn:{comp_guess_col}")
+
+    if comp_guess_row == ship_row and comp_guess_col == ship_col:
+        print("Computer Hit! You lost a battleship\n")
+        print(f"Computer's score is:{comp_score + 1}")
     else:
-        print("Computer Miss!")
+        print("Computer Missed!")
+        print(f"Computer's score is:{comp_score}\n")
 
-    print(f"Your score is:{player_score}")
-    print(f"Computer's score is:{comp_score}")
-
-    make_guess()
+    play_game()
 
 
 def new_game():
     """
-    Starts game, sets board size and number of ships.
-    Print welcome message and takes players name.
+    Starts game, prints welcome message and takes players name.
     """
-    size = 5
-    num_ships = 4
     print("<", "-" * 38, ">")
     print(" Welcome to the classic Battleships game!")
     print(f" The game board is a {size} x {size} square")
-    print(f" You and the computer have {num_ships} ships each")
     print(" The top left corner is Row:0 Col:0")
+    print(f" You have {guesses} guesses")
     print("<", "-" * 38, ">")
     player_name = input(" Please enter your name here:")
     print(f" Good luck {player_name} and remember to have fun!")
     print("<", "-" * 38, ">\n")
 
-    print(f"{player_name}'s Board:\n")
-    print_player_board(player_board)
-    print("\nComputer's Board:\n")
-    print_computer_board(computer_board)
+    print("Battleship Board:\n")
+    print_board(board)
 
-    make_guess()
+    play_game()
 
 
 new_game()
