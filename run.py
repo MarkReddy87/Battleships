@@ -40,29 +40,23 @@ ship_col = random_col(board)
 
 
 def play_game():
-    comp_score = 0
-    player_score = 0
     guess_row = input("\nPlease guess a row: ")
     guess_col = input("Please guess a column: ")
     print(f"\nYou guessed row:{guess_row} and column:{guess_col}")
 
     if guess_row == ship_row and guess_col == ship_col:
-        print("Hit! You sunk a battleship\n")
-        print(f"Your score is:{player_score + 1}\n")
+        print("Hit! You sunk my battleship\n")
     else:
         print("Miss! Please try again")
-        print(f"Your score is:{player_score}\n")
 
     comp_guess_row = randint(0, len(board) - 1)
     comp_guess_col = randint(0, len(board[0]) - 1)
     print(f"Computer guessed row:{comp_guess_row} and cloumn:{comp_guess_col}")
 
     if comp_guess_row == ship_row and comp_guess_col == ship_col:
-        print("Computer Hit! You lost a battleship\n")
-        print(f"Computer's score is:{comp_score + 1}")
+        print("Computer Hit! You lose battleships\n")
     else:
         print("Computer Missed!")
-        print(f"Computer's score is:{comp_score}\n")
 
     play_game()
 
