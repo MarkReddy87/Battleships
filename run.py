@@ -1,5 +1,4 @@
 from random import randint
-
 """
 Defining variables
 """
@@ -10,8 +9,6 @@ board = []
 """
 Creating battleship board
 """
-
-
 for i in range(0, 5):
     board.append(["#"]*5)
 
