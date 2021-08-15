@@ -80,9 +80,13 @@ def play_game():
             board[guess_row][guess_col] = "*"
             exit()
         else:
-            print("Computer Missed!\n")
-            board[comp_guess_row][comp_guess_col] = "@"
-            print_board(board)
+            if (board[comp_guess_row][comp_guess_col] == "@"):
+                print("Computer made a duplicate guess, your turn again")
+                play_game()
+            else:
+                print("Computer Missed!\n")
+                board[comp_guess_row][comp_guess_col] = "@"
+                print_board(board)
 
     if guesses >= 9:
         print("You ran out of guesses, it's a draw :-( Please try again!")
