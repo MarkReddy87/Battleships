@@ -4,7 +4,7 @@ You sunk my battleship is a python terminal game, which runs in the Code Institu
 
 Can you win against the computer? Find and sink the battleship hidden on the playing board and the gloy is yours!!
 
-[Please view my live project here]()
+[Please view my live project here](https://you-sunk-my-battleship.herokuapp.com/)
 
 Screenshot of live project here.
 
@@ -71,8 +71,18 @@ I tried using return and break statements within if statements when the player o
 
 ## Deployment
 
-gitpod
-github pages
-heroku
+This project was deployed using Code Institute's mock terminal for Heroku. Steps for deployment are as follows:
+* Create a new app on the Heroku site 
+* Add build pack ensuring Python is at the top and nodjs is below that.
+* Head to the deploy tab and choose github as the deployment method. 
+* Add the project repository and then you can deploy.
 
 ## Credits 
+
+[Code Institute](https://codeinstitute.net/) for deployment terminal.
+[Wikipedia](https://www.wikipedia.org/) for info on Battleship game and Python coding language.
+[Stack Overflow](https://stackoverflow.com/) for queries on code syntax.
+[GitHub](https://github.com/) for creating project repository.
+[Gitpod](https://gitpod.io/workspaces) for building the project in a workspace.
+[Heroku](https://heroku.com/) for deployinig the completed project.
+[PEP8](http://pep8online.com/) for validating all code within the project.
