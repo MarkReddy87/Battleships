@@ -20,7 +20,7 @@ def print_board(board):
 
 """
 choosing random row and column for ship on board and
-storing it in a variable
+storing them in variables
 """
 
 
@@ -74,7 +74,7 @@ def play_game():
         print(f"Computer guessed column: {comp_guess_col}")
 
         if comp_guess_row == ship_row and comp_guess_col == ship_col:
-            print("Computer Hit! You lose battleships\n")
+            print("Hit! Computer destroyed the battleship\n")
             board[guess_row][guess_col] = "*"
             exit()
         else:
@@ -96,7 +96,7 @@ def new_game():
     play_game function.
     """
     print("<", "-" * 38, ">")
-    print(" Welcome to the classic Battleships game!")
+    print(" Welcome to the you sunk my Battleship game!")
     print(f" The game board is a {size} x {size} square")
     print(" The top left corner is Row:0 Col:0")
     print(f" You have {player_guesses} guesses")
