@@ -24,23 +24,23 @@ As a fist time user of this game I want the experience to be fun, stress free an
 * The player is greeted with a welcome message, the game board is described, the coordinates layout is explained and the player is told they only have 10 guesses to try and win. 
 * The player is then asked to input their name and upon entering is wished good luck in the battle against the computer.
 
-screenshot of welome message 
+![Welcome message screenshot](screenshots/welcome_message_screenshot.PNG) 
 
 * The computer generates a 5 x 5 square board.
 * A ship is randomly placed and hidden within the board 
 
-screenshot of board 
+![Board screenshot](screenshots/playing_board_screenshot.PNG) 
 
 * The user is then prompted to guess a row and a colum to try and sink the ship.
 * If its a miss the board is printed again updated with the guessed coordinates replacing the "#" with a "@" 
 
-screenshot of miss.
+![Player miss screenshot](screenshots/miss_screenshot.PNG)
 
 * The computer then takes a turn and the board is updated accordingly also.
 * The game then continues until there is a hit form the user or the computer.
 * The game will also end if the amount or turns exceeds 10 in which case there is a draw!
 
-screenshot of win .
+![Player win screenshot](screenshots/player_win_screenshot.PNG)
 
 
 future features
