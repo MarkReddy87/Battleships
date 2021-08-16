@@ -21,6 +21,7 @@ As a fist time user of this game I want the experience to be fun, stress free an
 ## Features
 
 ### Existing features
+
 * The player is greeted with a welcome message, the game board is described, the coordinates layout is explained and the player is told they only have 10 guesses to try and win. 
 * The player is then asked to input their name and upon entering is wished good luck in the battle against the computer.
 
@@ -45,18 +46,33 @@ As a fist time user of this game I want the experience to be fun, stress free an
 * Included in the code is input validation / exception handling. User can only use integer when guessing, the guesses must be within the bounds of the playing board and the user cannot make the same guess twice. If any of these actions are executed an on screen warning pops up and the user is asked to guess again.
 
 ![Missed board screenshot](screenshots/missed_board_screenshot.PNG)
+
 ![Number only screenshot](screenshots/numbers_only_screenshot.PNG)
+
 ![Duplicate guess screenshot](screenshots/duplicate_guess_screenshot.PNG)
 
+### Future Features
 
+I would like to add a player and a computer as well a having multiple ships on each board.
 
+## Technology
 
-future features
-technology
-testing
-   1 code validation
-   2 fixed bugs
-Deployment
-   1 via gitpod
-   2 via github pages
-credits
+The only technology used in this project was the [Python](https://en.wikipedia.org/wiki/Python_(programming_language)) coding language.
+
+## Testing
+
+### Code Validation
+
+All Python code used in this project was passed through the [PEP8](http://pep8online.com/) online code validator and no errors were returned. 
+
+### Fixed bugs
+
+I tried using return and break statements within if statements when the player or computer had won the game but found that the exit() worked how I wanted it to by ending the function. No bugs remained after this.
+
+## Deployment
+
+gitpod
+github pages
+heroku
+
+## Credits 
