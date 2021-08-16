@@ -42,6 +42,14 @@ As a fist time user of this game I want the experience to be fun, stress free an
 
 ![Player win screenshot](screenshots/player_win_screenshot.PNG)
 
+* Included in the code is input validation / exception handling. User can only use integer when guessing, the guesses must be within the bounds of the playing board and the user cannot make the same guess twice. If any of these actions are executed an on screen warning pops up and the user is asked to guess again.
+
+![Missed board screenshot](screenshots/missed_board_screenshot.PNG)
+![Number only screenshot](screenshots/numbers_only_screenshot.PNG)
+![Duplicate guess screenshot](screenshots/duplicate_guess_screenshot.PNG)
+
+
+
 
 future features
 technology
