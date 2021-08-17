@@ -49,7 +49,10 @@ I would like to add a player and a computer as well a having multiple ships on e
 
 ## Technology
 
-The only technology used in this project was the [Python](https://en.wikipedia.org/wiki/Python_(programming_language)) programming language.
+* The only coding language used in this project was the [Python](https://en.wikipedia.org/wiki/Python_(programming_language)) programming language.
+* [Heroku](https://heroku.com/) - This clound based platform was used to deploy the project.
+* [GitHub](https://github.com/) was used to keep a history of the development process.
+* A [GitPod](https://gitpod.io/) workspace was used to write and test all code written during this project.
 
 ## Testing
 
