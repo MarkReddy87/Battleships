@@ -3,8 +3,10 @@ from random import randint
 Defining variables
 """
 size = 5
-player_guesses = 5
+guesses = 5
 board = []
+global turns
+turns = 0
 
 
 """
@@ -79,39 +81,48 @@ def comp_guess():
             player_guess()
 
 
-def player_guess():
-    for guesses in range(5):
-        try:
-            guess_row = int(input("\nPlease guess a row:\n"))
-        except ValueError:
-            print("Can only enter number's, try again!")
-            player_guess()
-        try:
-            guess_col = int(input("Please guess a column:\n"))
-        except ValueError:
-            print("Can only enter number's, try again!")
-            player_guess()
+def check_turns():
+    global turns
+    if turns > 4:
+        print("Sorry you ran out of guesses, better luck next time :-/")
+        exit()
 
-        if guess_row == ship_row and guess_col == ship_col:
-            print("You Win! Battleship destroyed!!!!")
-            board[guess_row][guess_col] = "*"
-            print_board(board)
-            exit()
+
+def player_guess():
+    global turns
+    check_turns()
+    try:
+        guess_row = int(input("\nPlease guess a row:\n"))
+    except ValueError:
+        print("Can only enter number's, try again!")
+        player_guess()
+    try:
+        guess_col = int(input("Please guess a column:\n"))
+    except ValueError:
+        print("Can only enter number's, try again!")
+        player_guess()
+
+    if guess_row == ship_row and guess_col == ship_col:
+        print("You Win! Battleship destroyed!!!!")
+        board[guess_row][guess_col] = "*"
+        print_board(board)
+        exit()
+    else:
+        if (guess_row < 0 or guess_row > 4) or \
+                (guess_col < 0 or guess_col > 4):
+            print("You missed the board and lose a turn :-(")
+            turns += 1
+            comp_guess()
+        elif (board[guess_row][guess_col] == "@"):
+            print("That was guessed already, you lose a turn!")
+            turns += 1
+            comp_guess()
         else:
-            if (guess_row < 0 or guess_row > 4) or \
-                    (guess_col < 0 or guess_col > 4):
-                print("You missed the board and lose a turn :-(")
-                comp_guess()
-            elif (board[guess_row][guess_col] == "@"):
-                print("That was guessed already, you lose a turn!")
-                comp_guess()
-            else:
-                print("\nMiss! Please try again\n")
-                board[guess_row][guess_col] = "@"
-                print_board(board)
-                comp_guess()
-                if guesses > 4:
-                    print("You ran out of guesses, it's a draw :-(")
+            print("\nMiss! Please try again\n")
+            board[guess_row][guess_col] = "@"
+            turns += 1
+            print_board(board)
+            comp_guess()
 
 
 def new_game():
@@ -136,7 +147,7 @@ def main():
     print(" Welcome to the you sunk my Battleship game!")
     print(f" The game board is a {size} x {size} square")
     print(" The top left corner is Row:0 Col:0")
-    print(f" You have {player_guesses} guesses to win")
+    print(f" You have {guesses} guesses to win")
     print("<", "-" * 38, ">")
 
     new_game()
