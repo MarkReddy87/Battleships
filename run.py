@@ -43,6 +43,12 @@ ship_row = random_row(board)
 ship_col = random_col(board)
 
 
+def check_name():
+    """
+    Check if user name entered is valid
+    """
+
+
 def play_game():
     for guesses in range(5):
         try:
@@ -99,22 +105,31 @@ def play_game():
 
 def new_game():
     """
-    Starts game, prints welcome message, takes players name and runs
+    Starts new game takes then checks players name, prints first board and runs
     play_game function.
     """
-    print("<", "-" * 38, ">")
-    print(" Welcome to the you sunk my Battleship game!")
-    print(f" The game board is a {size} x {size} square")
-    print(" The top left corner is Row:0 Col:0")
-    print(f" You have {player_guesses} guesses")
-    print("<", "-" * 38, ">")
     player_name = input(" Please enter your name here:\n")
+    check_name()
     print(f" Good luck {player_name} and remember to have fun!")
-    print("<", "-" * 38, ">\n") 
+    print("<", "-" * 38, ">\n")
     print("Battleship Board:\n")
     print_board(board)
 
     play_game()
 
 
-new_game()
+def main():
+    """
+    Starts program, gives welcome message, tells player board size and amount
+    of guesses to win
+    """
+    print("<", "-" * 38, ">")
+    print(" Welcome to the you sunk my Battleship game!")
+    print(f" The game board is a {size} x {size} square")
+    print(" The top left corner is Row:0 Col:0")
+    print(f" You have {player_guesses} guesses to win")
+    print("<", "-" * 38, ">")
+    new_game()
+
+
+main()
