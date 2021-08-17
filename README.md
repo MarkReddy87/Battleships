@@ -45,7 +45,8 @@ I designed this project to be a simplified version of the game battleships. It c
 
 ### Future Features
 
-I would like to add a player and a computer as well a having multiple ships on each board.
+* I would like to add two playing boards, one for the user and one for the computer.
+* I would also like to have multiple ships on each board with the possibility of user placement.
 
 ## Technology
 
