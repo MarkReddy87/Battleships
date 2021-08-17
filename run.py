@@ -3,41 +3,48 @@ from random import randint
 Defining variables
 """
 size = 5
-player_guesses = 10
+player_guesses = 5
 board = []
 
+
 """
-Creating battleship board
+Initializes playing board
 """
 for i in range(0, 5):
     board.append(["#"]*5)
 
 
 def print_board(board):
+    """
+    Print's battleship board
+    """
     for row in board:
         print(" ".join(row))
 
 
-"""
-choosing random row and column for ship on board and
-storing them in variables
-"""
-
-
 def random_row(board):
+    """
+    choosing random row for ship on board
+    """
     return randint(0, len(board) - 1)
 
 
 def random_col(board):
+    """
+    choosing random column for ship on board
+    """
     return randint(0, len(board[0]) - 1)
 
 
+"""
+Storing the ship row and column in variables
+"""
 ship_row = random_row(board)
 ship_col = random_col(board)
 
 
 def play_game():
-    for guesses in range(10):
+    for guesses in range(5):
         try:
             guess_row = int(input("\nPlease guess a row:\n"))
             print(f"You guessed row: {guess_row}")
@@ -86,7 +93,7 @@ def play_game():
                 board[comp_guess_row][comp_guess_col] = "@"
                 print_board(board)
 
-    if guesses >= 9:
+    if guesses >= 4:
         print("You ran out of guesses, it's a draw :-( Please try again!")
 
 
@@ -103,8 +110,7 @@ def new_game():
     print("<", "-" * 38, ">")
     player_name = input(" Please enter your name here:\n")
     print(f" Good luck {player_name} and remember to have fun!")
-    print("<", "-" * 38, ">\n")
-
+    print("<", "-" * 38, ">\n") 
     print("Battleship Board:\n")
     print_board(board)
 
