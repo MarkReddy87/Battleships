@@ -61,6 +61,9 @@ def check_name():
 
 
 def comp_guess():
+    """
+    Generates computer guess, prints and updates the board accordingly
+    """
     check_turns()
     comp_guess_row = randint(0, len(board) - 1)
     comp_guess_col = randint(0, len(board[0]) - 1)
@@ -68,8 +71,7 @@ def comp_guess():
     print(f"Computer guessed column: {comp_guess_col}")
 
     if comp_guess_row == ship_row and comp_guess_col == ship_col:
-        print("Hit! You lose, computer destroyed the battleship :-( Better \
-            luck next time.")
+        print("Hit! Computer destroyed the battleship. Better luck next time.")
         board[comp_guess_row][comp_guess_col] = "*"
         print_board(board)
         exit()
@@ -95,6 +97,9 @@ def check_turns():
 
 
 def check_row():
+    """
+    Checks if row entered is a number
+    """
     global guess_row
     try:
         int(guess_row)
@@ -104,6 +109,9 @@ def check_row():
 
 
 def check_col():
+    """
+    Check if column entered is a number
+    """
     global guess_col
     try:
         int(guess_col)
@@ -113,42 +121,47 @@ def check_col():
 
 
 def player_guess():
+    """
+    Takes user input, validates guesses and checks if player has won.
+    """
     global turns
     global guess_row
     global guess_col
     check_turns()
     guess_row = input("\nPlease guess a row:\n")
     check_row()
+    if int(guess_row) < 0 or int(guess_row) > 4:
+        print("You missed the board and lose a turn :-(")
+        turns += 1
+        comp_guess()
     guess_col = input("Please guess a column:\n")
     check_col()
+    if int(guess_col) < 0 or int(guess_col) > 4:
+        print("You missed the board and lose a turn :-(")
+        turns += 1
+        comp_guess()
 
     if guess_row == ship_row and guess_col == ship_col:
         print("You Win! Battleship destroyed!!!!")
         board[int(guess_row)][int(guess_col)] = "*"
         print_board(board)
         exit()
+    elif (board[int(guess_row)][int(guess_col)] == "@"):
+        print("That was guessed already, you lose a turn!")
+        turns += 1
+        comp_guess()
     else:
-        if int(guess_row) < 0 or int(guess_row) > 4 or \
-                int(guess_col) < 0 or int(guess_col) > 4:
-            print("You missed the board and lose a turn :-(")
-            turns += 1
-            comp_guess()
-        elif (board[int(guess_row)][int(guess_col)] == "@"):
-            print("That was guessed already, you lose a turn!")
-            turns += 1
-            comp_guess()
-        else:
-            print("\nMiss! Please try again\n")
-            board[int(guess_row)][int(guess_col)] = "@"
-            turns += 1
-            print_board(board)
-            comp_guess()
+        print("\nMiss! Please try again\n")
+        board[int(guess_row)][int(guess_col)] = "@"
+        turns += 1
+        print_board(board)
+        comp_guess()
 
 
 def new_game():
     """
     Starts new game then checks players name, prints first board and runs
-    play_game function.
+    player_guess function.
     """
     check_name()
     print("<", "-" * 38, ">\n")
@@ -161,10 +174,10 @@ def new_game():
 def main():
     """
     Starts program, gives welcome message, tells player board size and amount
-    of guesses to win
+    of guesses they have to win
     """
     print("<", "-" * 38, ">")
-    print(" Welcome to the you sunk my Battleship game!")
+    print(" Welcome to You Sunk My Battleship!")
     print(f" The game board is a {size} x {size} square")
     print(" The top left corner is Row:0 Col:0")
     print(f" You have {guesses} guesses to win")
