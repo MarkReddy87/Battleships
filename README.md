@@ -58,28 +58,34 @@ The only technology used in this project was the [Python](https://en.wikipedia.o
 * All Python code used in this project was passed through the [PEP8](http://pep8online.com/) online code validator and no errors were returned. 
 * Other testing was done directly in the GitPod terminal throughout the development process as well as using print statements to check the code was working along the way. 
 
-Please see screenshots of the fully tested game below including handling errors and warning messages:
+### Screenshots
 
-#### Computer win screenshot
+#### Computer win screenshot:
+Here we see how the board is updated with the location of a battleship hit marked with an "*". In this particular case the computer won but if the user wins the boards prints the same way but with a different message above. 
 ![Computer win screenshot](screenshots/comp_win_ss.PNG)
 
-### Invalid guess screenshot
+### Invalid guess screenshot:
+Here we see what happens when a user enters a string value instead of a number. This counts as a turn for the user and can only do this 5 times before the program ends. 
 ![Invalid guess screenshot](screenshots/invalid_guess_ss.PNG)
 
-### Miss screenshot
+### Miss screenshot:
+Here we can see that the player guess has missed and the playing board has been updated with the guessed coordinates by replacing the "#" with a "@". This will continue for each guess until the turn limit is reached or there is a winner.
 ![Miss screenshot](screenshots/miss_ss.PNG)
 
-### No more guesses screenshot
+### No more guesses screenshot:
+Here we see the board is updated with many computer and player misses. The user is told they have no more guesses and is wished luck in their next attempt.
 ![No more guesses screenshot](screenshots/no_guesses_left_ss.PNG)
 
 ### Out of bounds guess screenshot 
-![Out of bounds guess screenshot](screenshots/out_of_bounds_ss.PNG)
+Here we see what happens if the user makes a guess which is off the board. They are informed that they lose a turn and to only use numbers within the allowed range.
+![Out of bounds guess screenshot](screenshots/out_of_bound_ss.PNG)
 
 ## Fixed Bugs
 
 I ran into a couple of bugs while writing this game.
 * I tried using a for loop to keep track of the guesses but it did not work the way I intended. My solution was to create a global variable and increment it by one every time the user made a correct guess, duplicate guess or an out of bounds guess. 
-* Another bug I came across was after creating the check_row and check_col functions the if statements in the player_guess funtion gave an error as I had converted the variable values. I ammended this by wrapping the variables within the function with int() methods so they were read as integers. 
+* Another bug I came across was after creating the check_row and check_col functions the if statements in the player_guess funtion gave an error as I had converted the variable values. I ammended this by wrapping the variables within the function with int() methods so they were read as integers.
+* The last bug I came across was that if the user kept guessing string values the program would never end so I added the turn counter to check_row and check_col to limit string guesses to 5.
 
 ## Deployment
 

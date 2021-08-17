@@ -1,9 +1,13 @@
 from random import randint
 
 """Defining variables"""
+# creates empty board list to create playing board
 board = []
+# sets initial turns to 0, incremented with turns += 1
 turns = 0
+# sets guess_row to empty string which will be changed by input()
 guess_row = ""
+# sets guess_col to empty string which will be changed by input()
 guess_col = ""
 
 """Initializes playing board"""
