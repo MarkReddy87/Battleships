@@ -52,25 +52,45 @@ def check_name():
     if len(player_name) < 1 or not player_name.isalnum() or not \
             player_name[0].isalpha():
         print("Please enter a valid name")
-        main()
+        check_name()
     else:
-        print(f"Welcome {player_name} and good luck")
+        print(f"Welcome {player_name} and good luck!")
 
 
-def play_game():
-    for guesses in range(5):
+def comp_guess():
+    comp_guess_row = randint(0, len(board) - 1)
+    comp_guess_col = randint(0, len(board[0]) - 1)
+    print(f"\nComputer guessed row: {comp_guess_row}")
+    print(f"Computer guessed column: {comp_guess_col}")
+
+    if comp_guess_row == ship_row and comp_guess_col == ship_col:
+        print("Hit! You lose, computer destroyed the battleship :-(")
+        board[comp_guess_row][comp_guess_col] = "*"
+        exit()
+    else:
+        if (board[comp_guess_row][comp_guess_col] == "@"):
+            print("Computer made a duplicate guess, your turn again")
+            player_guess()
+        else:
+            print("Computer Missed!\n")
+            board[comp_guess_row][comp_guess_col] = "@"
+            print_board(board)
+
+
+def player_guess():
+    for guesses in range(3):
         try:
             guess_row = int(input("\nPlease guess a row:\n"))
             print(f"You guessed row: {guess_row}")
         except ValueError:
             print("Can only enter number's, try again!")
-            play_game()
+            player_guess()
         try:
             guess_col = int(input("Please guess a column:\n"))
             print(f"You guessed: {guess_col}")
         except ValueError:
             print("Can only enter number's, try again!")
-            play_game()
+            player_guess()
 
         if guess_row == ship_row and guess_col == ship_col:
             print("You Win! Battleship destroyed\n")
@@ -80,34 +100,18 @@ def play_game():
             if (guess_row < 0 or guess_row > 4) or \
                     (guess_col < 0 or guess_col > 4):
                 print("You missed the board, try again!")
-                play_game()
+                player_guess()
             elif (board[guess_row][guess_col] == "@"):
                 print("That was guessed already, please try again!")
-                play_game()
+                player_guess()
             else:
                 print("\nMiss! Please try again\n")
                 board[guess_row][guess_col] = "@"
                 print_board(board)
 
-        comp_guess_row = randint(0, len(board) - 1)
-        comp_guess_col = randint(0, len(board[0]) - 1)
-        print(f"\nComputer guessed row: {comp_guess_row}")
-        print(f"Computer guessed column: {comp_guess_col}")
+            comp_guess()
 
-        if comp_guess_row == ship_row and comp_guess_col == ship_col:
-            print("Hit! You lose, computer destroyed the battleship\n")
-            board[guess_row][guess_col] = "*"
-            exit()
-        else:
-            if (board[comp_guess_row][comp_guess_col] == "@"):
-                print("Computer made a duplicate guess, your turn again")
-                play_game()
-            else:
-                print("Computer Missed!\n")
-                board[comp_guess_row][comp_guess_col] = "@"
-                print_board(board)
-
-    if guesses >= 4:
+    if guesses > 2:
         print("You ran out of guesses, it's a draw :-( Please try again!")
 
 
@@ -121,7 +125,7 @@ def new_game():
     print("Battleship Board:\n")
     print_board(board)
 
-    play_game()
+    player_guess()
 
 
 def main():
