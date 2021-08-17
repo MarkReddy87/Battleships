@@ -61,6 +61,7 @@ def check_name():
 
 
 def comp_guess():
+    check_turns()
     comp_guess_row = randint(0, len(board) - 1)
     comp_guess_col = randint(0, len(board[0]) - 1)
     print(f"\nComputer guessed row: {comp_guess_row}")
@@ -123,7 +124,7 @@ def player_guess():
 
     if guess_row == ship_row and guess_col == ship_col:
         print("You Win! Battleship destroyed!!!!")
-        board[guess_row][guess_col] = "*"
+        board[int(guess_row)][int(guess_col)] = "*"
         print_board(board)
         exit()
     else:
