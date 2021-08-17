@@ -16,40 +16,30 @@ I designed this project to be a simplified version of the game battleships. It c
 
 ## User Stories
 
-As a fist time user of this game I want the experience to be fun, stress free and easy to play. I feel that I have achieved this through simple to follow prompts and full exception handling which will always bring the user back on track and get that win.
+* As a fist time user of this game I want the experience to be fun, stress free and easy to play. I feel that I have achieved this through simple to follow prompts and full exception handling which will always bring the user back on track to secure that win against the computer.
+* As a user I want to be able to enter my name and have it displayed on screen while the game is running.
+* As a user I want to be able to guess the coordinates of where I think the battleship is and also let me know if I have missed or hit the ship.
+* As a user I want the game to alert me if I have won or lost and reveal the positoin of the ship on the playing board.
+* As a gamer I want there to be a specific amount of guesses allowed before the game is over so it is a challenge to win which will encourage me to play again.
+* As a gamer I would expect to be penalised if I make a duplicate guess or if my guess is out of the bounds of the playing board. The penalty would be to lose a turn. 
+
 
 ## Features
 
 ### Existing features
 
-* The player is greeted with a welcome message, the game board is described, the coordinates layout is explained and the player is told they only have 10 guesses to try and win. 
-* The player is then asked to input their name and upon entering is wished good luck in the battle against the computer.
-
-![Welcome message screenshot](screenshots/welcome_message_screenshot.PNG) 
-
+* The player is greeted with a welcome message, the game board is described, the coordinates layout is explained and the player is told they only have 5 guesses to try and win. 
+* The player is then asked to input their name and upon entering valid data they are wished good luck in the battle against the computer.
 * The computer generates a 5 x 5 square board.
 * A ship is randomly placed and hidden within the board 
-
-![Board screenshot](screenshots/playing_board_screenshot.PNG) 
-
 * The user is then prompted to guess a row and a colum to try and sink the ship.
-* If its a miss the board is printed again updated with the guessed coordinates replacing the "#" with a "@" 
-
-![Player miss screenshot](screenshots/miss_screenshot.PNG)
-
-* The computer then takes a turn and the board is updated accordingly also.
-* The game then continues until there is a hit form the user or the computer.
-* The game will also end if the amount or turns exceeds 10 in which case there is a draw!
-
-![Player win screenshot](screenshots/player_win_screenshot.PNG)
-
-* Included in the code is input validation / exception handling. User can only use integer when guessing, the guesses must be within the bounds of the playing board and the user cannot make the same guess twice. If any of these actions are executed an on screen warning pops up and the user is asked to guess again.
-
-![Missed board screenshot](screenshots/missed_board_screenshot.PNG)
-
-![Number only screenshot](screenshots/numbers_only_screenshot.PNG)
-
-![Duplicate guess screenshot](screenshots/duplicate_guess_screenshot.PNG)
+* Once valid coordinates are entered the user is told if its a miss or a hit. 
+* If the user missed the board is printed again, updated with the guessed coordinates replacing the "#" with a "@" 
+* If its a hit the user is congratulated on their win and the program ends.
+* The computer will then take a turn and the board is updated accordingly also.
+* The game will then continues until there is a hit form the user or the computer.
+* The game will also end if the amount or turns exceeds 5 and the user is encouraged to play again.
+* Included in the code is input validation / exception handling. User can only use integers when guessing, the guesses must be within the bounds of the playing board and the user cannot make the same guess twice. If any of these actions are executed an on screen warning explains that the user loses a turn and is asked to guess again until there is no more guesses.
 
 ### Future Features
 
@@ -57,21 +47,30 @@ I would like to add a player and a computer as well a having multiple ships on e
 
 ## Technology
 
-The only technology used in this project was the [Python](https://en.wikipedia.org/wiki/Python_(programming_language)) coding language.
+The only technology used in this project was the [Python](https://en.wikipedia.org/wiki/Python_(programming_language)) programming language.
 
 ## Testing
 
 ### Code Validation
 
-All Python code used in this project was passed through the [PEP8](http://pep8online.com/) online code validator and no errors were returned. 
+* All Python code used in this project was passed through the [PEP8](http://pep8online.com/) online code validator and no errors were returned. 
+* Other testing was done directly in the GitPod terminal throughout the development process as well as using print statements to check the code was working along the way. 
 
 ### Fixed bugs
 
-I tried using return and break statements within if statements when the player or computer had won the game but found that the exit() worked how I wanted it to by ending the function. No bugs remained after this.
+I ran into a couple of bugs while writing this game.
+* I tried using a for loop to keep track of the guesses but it did not work the way I intended. My solution was to create a global variable and increment it by one every time the user made a correct guess, duplicate guess or an out of bounds guess. 
+* Another bug I came across was after creating the check_row and check_col functions the if statements in the player_guess funtion gave an error as I had converted the variable values. I ammended this by wrapping the variables within the function with int() methods so they were read as integers. 
 
 ## Deployment
 
-This project was deployed using Code Institute's mock terminal for Heroku. Steps for deployment are as follows:
+This project was built entirely using GitHub and GitPod.
+* First I created a repository in my GitHub account and named it appropriately.
+* Then I was able to create a GitPod workspace which included the Code Institute template where I was able to write and save all my code online.
+* This service has been invaluable to creating all my projects and I would be lost without it.  
+
+
+This project was deployed using Code Institute's mock terminal for Heroku. Steps for deployment on the Heroku site are as follows:
 * Create a new app on the Heroku site 
 * Add build pack ensuring Python is at the top and nodjs is below that.
 * Head to the deploy tab and choose github as the deployment method. 

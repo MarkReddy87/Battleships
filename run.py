@@ -100,7 +100,6 @@ def check_row():
     """
     Checks if row entered is a number
     """
-    global guess_row
     try:
         int(guess_row)
     except ValueError:
@@ -112,7 +111,6 @@ def check_col():
     """
     Check if column entered is a number
     """
-    global guess_col
     try:
         int(guess_col)
     except ValueError:
@@ -122,7 +120,8 @@ def check_col():
 
 def player_guess():
     """
-    Takes user input, validates guesses and checks if player has won.
+    Takes user input, validates guesses, update turn count and checks if
+    player has won.
     """
     global turns
     global guess_row
