@@ -5,6 +5,9 @@ Defining variables
 size = 5
 guesses = 5
 board = []
+"""
+Ceclare global variable to keep track of player guesses
+"""
 global turns
 turns = 0
 
@@ -66,7 +69,8 @@ def comp_guess():
     print(f"Computer guessed column: {comp_guess_col}")
 
     if comp_guess_row == ship_row and comp_guess_col == ship_col:
-        print("Hit! You lose, computer destroyed the battleship :-(")
+        print("Hit! You lose, computer destroyed the battleship :-( Better \
+            luck next time.")
         board[comp_guess_row][comp_guess_col] = "*"
         print_board(board)
         exit()
@@ -82,6 +86,9 @@ def comp_guess():
 
 
 def check_turns():
+    """
+    #Check if max guesses have been made and exit game
+    """
     global turns
     if turns > 4:
         print("Sorry you ran out of guesses, better luck next time :-/")
