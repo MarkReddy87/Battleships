@@ -45,8 +45,16 @@ ship_col = random_col(board)
 
 def check_name():
     """
-    Check if user name entered is valid
+    Takes user names and checks if it is valid (cannot be blank, a number and
+    must start with a letter) then prints a welcome message
     """
+    player_name = input("Enter your name here:\n")
+    if len(player_name) < 1 or not player_name.isalnum() or not \
+            player_name[0].isalpha():
+        print("Please enter a valid name")
+        main()
+    else:
+        print(f"Welcome {player_name} and good luck")
 
 
 def play_game():
@@ -87,7 +95,7 @@ def play_game():
         print(f"Computer guessed column: {comp_guess_col}")
 
         if comp_guess_row == ship_row and comp_guess_col == ship_col:
-            print("Hit! Computer destroyed the battleship\n")
+            print("Hit! You lose, computer destroyed the battleship\n")
             board[guess_row][guess_col] = "*"
             exit()
         else:
@@ -105,12 +113,10 @@ def play_game():
 
 def new_game():
     """
-    Starts new game takes then checks players name, prints first board and runs
+    Starts new game then checks players name, prints first board and runs
     play_game function.
     """
-    player_name = input(" Please enter your name here:\n")
     check_name()
-    print(f" Good luck {player_name} and remember to have fun!")
     print("<", "-" * 38, ">\n")
     print("Battleship Board:\n")
     print_board(board)
@@ -129,6 +135,7 @@ def main():
     print(" The top left corner is Row:0 Col:0")
     print(f" You have {player_guesses} guesses to win")
     print("<", "-" * 38, ">")
+
     new_game()
 
 
