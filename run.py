@@ -66,53 +66,52 @@ def comp_guess():
     if comp_guess_row == ship_row and comp_guess_col == ship_col:
         print("Hit! You lose, computer destroyed the battleship :-(")
         board[comp_guess_row][comp_guess_col] = "*"
+        print_board(board)
         exit()
     else:
         if (board[comp_guess_row][comp_guess_col] == "@"):
-            print("Computer made a duplicate guess, your turn again")
+            print("Computer made a duplicate guess, your turn")
             player_guess()
         else:
             print("Computer Missed!\n")
             board[comp_guess_row][comp_guess_col] = "@"
             print_board(board)
+            player_guess()
 
 
 def player_guess():
-    for guesses in range(3):
+    for guesses in range(5):
         try:
             guess_row = int(input("\nPlease guess a row:\n"))
-            print(f"You guessed row: {guess_row}")
         except ValueError:
             print("Can only enter number's, try again!")
             player_guess()
         try:
             guess_col = int(input("Please guess a column:\n"))
-            print(f"You guessed: {guess_col}")
         except ValueError:
             print("Can only enter number's, try again!")
             player_guess()
 
         if guess_row == ship_row and guess_col == ship_col:
-            print("You Win! Battleship destroyed\n")
+            print("You Win! Battleship destroyed!!!!")
             board[guess_row][guess_col] = "*"
+            print_board(board)
             exit()
         else:
             if (guess_row < 0 or guess_row > 4) or \
                     (guess_col < 0 or guess_col > 4):
-                print("You missed the board, try again!")
-                player_guess()
+                print("You missed the board and lose a turn :-(")
+                comp_guess()
             elif (board[guess_row][guess_col] == "@"):
-                print("That was guessed already, please try again!")
-                player_guess()
+                print("That was guessed already, you lose a turn!")
+                comp_guess()
             else:
                 print("\nMiss! Please try again\n")
                 board[guess_row][guess_col] = "@"
                 print_board(board)
-
-            comp_guess()
-
-    if guesses > 2:
-        print("You ran out of guesses, it's a draw :-( Please try again!")
+                comp_guess()
+                if guesses > 4:
+                    print("You ran out of guesses, it's a draw :-(")
 
 
 def new_game():
