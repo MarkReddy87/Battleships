@@ -1,16 +1,14 @@
 from random import randint
+
 """
 Defining variables
 """
 size = 5
 guesses = 5
 board = []
-"""
-Ceclare global variable to keep track of player guesses
-"""
-global turns
 turns = 0
-
+guess_row = ""
+guess_col = ""
 
 """
 Initializes playing board
@@ -95,19 +93,33 @@ def check_turns():
         exit()
 
 
+def check_row():
+    global guess_row
+    try:
+        int(guess_row)
+    except ValueError:
+        print("Can only enter number's, try again!")
+        player_guess()
+
+
+def check_col():
+    global guess_col
+    try:
+        int(guess_col)
+    except ValueError:
+        print("Can only enter number's, try again!")
+        player_guess()
+
+
 def player_guess():
     global turns
+    global guess_row
+    global guess_col
     check_turns()
-    try:
-        guess_row = int(input("\nPlease guess a row:\n"))
-    except ValueError:
-        print("Can only enter number's, try again!")
-        player_guess()
-    try:
-        guess_col = int(input("Please guess a column:\n"))
-    except ValueError:
-        print("Can only enter number's, try again!")
-        player_guess()
+    guess_row = input("\nPlease guess a row:\n")
+    check_row()
+    guess_col = input("Please guess a column:\n")
+    check_col()
 
     if guess_row == ship_row and guess_col == ship_col:
         print("You Win! Battleship destroyed!!!!")
@@ -115,18 +127,18 @@ def player_guess():
         print_board(board)
         exit()
     else:
-        if (guess_row < 0 or guess_row > 4) or \
-                (guess_col < 0 or guess_col > 4):
+        if int(guess_row) < 0 or int(guess_row) > 4 or \
+                int(guess_col) < 0 or int(guess_col) > 4:
             print("You missed the board and lose a turn :-(")
             turns += 1
             comp_guess()
-        elif (board[guess_row][guess_col] == "@"):
+        elif (board[int(guess_row)][int(guess_col)] == "@"):
             print("That was guessed already, you lose a turn!")
             turns += 1
             comp_guess()
         else:
             print("\nMiss! Please try again\n")
-            board[guess_row][guess_col] = "@"
+            board[int(guess_row)][int(guess_col)] = "@"
             turns += 1
             print_board(board)
             comp_guess()
