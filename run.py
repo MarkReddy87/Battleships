@@ -163,7 +163,7 @@ def new_game():
     player_guess function.
     """
     check_name()
-    print("<", "-" * 38, ">\n")
+    print("<", "-" * 34, ">\n")
     print("Battleship Board:\n")
     print_board(board)
 
@@ -175,12 +175,12 @@ def main():
     Starts program, gives welcome message, tells player board size and amount
     of guesses they have to win
     """
-    print("<", "-" * 38, ">")
+    print("<", "-" * 34, ">")
     print(" Welcome to You Sunk My Battleship!")
     print(f" The game board is a {size} x {size} square")
     print(" The top left corner is Row:0 Col:0")
     print(f" You have {guesses} guesses to win")
-    print("<", "-" * 38, ">")
+    print("<", "-" * 34, ">")
 
     new_game()
 

@@ -6,7 +6,9 @@ Can you win against the computer? Find and sink the battleship hidden on the pla
 
 [Please view my live project here](https://you-sunk-my-battleship.herokuapp.com/)
 
-Screenshot of live project here.
+Screenshot of live project below:
+
+![New game screenshot](screenshots/new_game_ss.PNG)
 
 ## Purpose of this project
 
@@ -56,7 +58,24 @@ The only technology used in this project was the [Python](https://en.wikipedia.o
 * All Python code used in this project was passed through the [PEP8](http://pep8online.com/) online code validator and no errors were returned. 
 * Other testing was done directly in the GitPod terminal throughout the development process as well as using print statements to check the code was working along the way. 
 
-### Fixed bugs
+Please see screenshots of the fully tested game below including handling errors and warning messages:
+
+#### Computer win screenshot
+![Computer win screenshot](screenshots/comp_win_ss.PNG)
+
+### Invalid guess screenshot
+![Invalid guess screenshot](screenshots/invalid_guess_ss.PNG)
+
+### Miss screenshot
+![Miss screenshot](screenshots/miss_ss.PNG)
+
+### No more guesses screenshot
+![No more guesses screenshot](screenshots/no_guesses_left_ss.PNG)
+
+### Out of bounds guess screenshot 
+![Out of bounds guess screenshot](screenshots/out_of_bounds_ss.PNG)
+
+## Fixed Bugs
 
 I ran into a couple of bugs while writing this game.
 * I tried using a for loop to keep track of the guesses but it did not work the way I intended. My solution was to create a global variable and increment it by one every time the user made a correct guess, duplicate guess or an out of bounds guess. 
@@ -78,10 +97,10 @@ This project was deployed using Code Institute's mock terminal for Heroku. Steps
 
 ## Credits 
 
-[Code Institute](https://codeinstitute.net/) for deployment terminal.
-[Wikipedia](https://www.wikipedia.org/) for info on Battleship game and Python coding language.
-[Stack Overflow](https://stackoverflow.com/) for queries on code syntax.
-[GitHub](https://github.com/) for creating project repository.
-[Gitpod](https://gitpod.io/workspaces) for building the project in a workspace.
-[Heroku](https://heroku.com/) for deployinig the completed project.
-[PEP8](http://pep8online.com/) for validating all code within the project.
+* [Code Institute](https://codeinstitute.net/) for deployment terminal.
+* [Wikipedia](https://www.wikipedia.org/) for info on Battleship game and Python coding language.
+* [Stack Overflow](https://stackoverflow.com/) for queries on code syntax.
+* [GitHub](https://github.com/) for creating project repository.
+* [Gitpod](https://gitpod.io/workspaces) for building the project in a workspace.
+* [Heroku](https://heroku.com/) for deployinig the completed project.
+* [PEP8](http://pep8online.com/) for validating all code within the project.
