@@ -1,47 +1,33 @@
 from random import randint
 
-"""
-Defining variables
-"""
-size = 5
-guesses = 5
+"""Defining variables"""
 board = []
 turns = 0
 guess_row = ""
 guess_col = ""
 
-"""
-Initializes playing board
-"""
-for i in range(0, 5):
+"""Initializes playing board"""
+for _ in range(0, 5):
     board.append(["#"]*5)
 
 
 def print_board(board):
-    """
-    Print's battleship board
-    """
+    """Print's battleship board"""
     for row in board:
         print(" ".join(row))
 
 
 def random_row(board):
-    """
-    choosing random row for ship on board
-    """
+    """choosing random row for ship on board"""
     return randint(0, len(board) - 1)
 
 
 def random_col(board):
-    """
-    choosing random column for ship on board
-    """
+    """choosing random column for ship on board"""
     return randint(0, len(board[0]) - 1)
 
 
-"""
-Storing the ship row and column in variables
-"""
+"""Storing the ship row and column in variables"""
 ship_row = random_row(board)
 ship_col = random_col(board)
 
@@ -61,9 +47,7 @@ def check_name():
 
 
 def comp_guess():
-    """
-    Generates computer guess, prints and updates the board accordingly
-    """
+    """Generates computer guess, prints and updates the board accordingly"""
     check_turns()
     comp_guess_row = randint(0, len(board) - 1)
     comp_guess_col = randint(0, len(board[0]) - 1)
@@ -87,9 +71,7 @@ def comp_guess():
 
 
 def check_turns():
-    """
-    #Check if max guesses have been made and exit game
-    """
+    """Check if max guesses have been made and exit game"""
     global turns
     if turns > 4:
         print("Sorry you ran out of guesses, better luck next time :-/")
@@ -97,25 +79,33 @@ def check_turns():
 
 
 def check_row():
-    """
-    Checks if row entered is a number
-    """
+    global turns
+    """Checks if row entered is a number"""
     try:
         int(guess_row)
     except ValueError:
-        print("Can only enter number's, try again!")
+        print("Can only enter number's form 0 - 4, try again!")
+        turns += 1
         player_guess()
 
 
 def check_col():
-    """
-    Check if column entered is a number
-    """
+    global turns
+    """Check if column entered is a number"""
     try:
         int(guess_col)
     except ValueError:
-        print("Can only enter number's, try again!")
+        print("Can only enter number's form 0 - 4, try again!")
+        turns += 1
         player_guess()
+
+
+def play_again():
+    start_again = input("Want to play again? type 'y':")
+    if start_again == "y" or "Y":
+        main()
+    else:
+        exit()
 
 
 def player_guess():
@@ -130,13 +120,13 @@ def player_guess():
     guess_row = input("\nPlease guess a row:\n")
     check_row()
     if int(guess_row) < 0 or int(guess_row) > 4:
-        print("You missed the board and lose a turn :-(")
+        print("You missed the board and lose a turn (only use 0 - 4)")
         turns += 1
         comp_guess()
     guess_col = input("Please guess a column:\n")
     check_col()
     if int(guess_col) < 0 or int(guess_col) > 4:
-        print("You missed the board and lose a turn :-(")
+        print("You missed the board and lose a turn (only use 0 - 4)")
         turns += 1
         comp_guess()
 
@@ -175,6 +165,8 @@ def main():
     Starts program, gives welcome message, tells player board size and amount
     of guesses they have to win
     """
+    size = 5
+    guesses = 5
     print("<", "-" * 34, ">")
     print(" Welcome to You Sunk My Battleship!")
     print(f" The game board is a {size} x {size} square")
